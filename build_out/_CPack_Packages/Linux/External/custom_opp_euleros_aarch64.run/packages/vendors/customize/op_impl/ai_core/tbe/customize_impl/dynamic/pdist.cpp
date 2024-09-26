@@ -258,16 +258,12 @@ public:
         //printf("%d %d %d %d %d\n",progress, loopCounts, this->henum, loopCounts*(this->henum)+progress+1, position);
         
 
-        uint32_t len1=(n-idx)/64*64;
+        for(uint32_t i=0;i<n-idx;i++)
+          {
+              yGm(position+i)=yy(i);
+          }
 
-        DataCopy(yGm[position], yy, len1);
-
-        for(uint32_t i=len1;i<n-idx;i++)
-        {
-            yGm(position+i)=yy(i);
-        }
-
-        Q_y.FreeTensor(yy);
+          Q_y.FreeTensor(yy);
 
         //printf("CopyOutEND\n");
 
